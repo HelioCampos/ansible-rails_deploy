@@ -6,7 +6,8 @@
 
 - name: Install app packages
   apt: pkg={{ item }} state=latest install_recommends=False
-  with_items: rails_deploy_packages_list_merged
+  with_items:
+    - '{{ rails_deploy_packages_list_merged }}'
 
 - name: Create app group
   group: name={{ rails_deploy_service }} system=True state=present
